@@ -2,11 +2,16 @@
 #include <stdlib.h>
 
 int check_args(int argc, char *argv[]);
+int file_open();
+int determine_multithreading();
 
 int main(int argc, char *argv[]){
     int checkNum = check_args(argc, argv);
     if(checkNum == 0){
         int sys_check = system("ps augx > ps.log");
+        if(sys_check == 0){
+            determine_multithreading();
+        }
     }
 }
 
@@ -32,4 +37,14 @@ int check_args(int argc, char *argv[]){
             return 0;
         }
     }
+}
+
+int file_open(){
+    FILE file = *fopen("./ps.log", "r");
+    
+    return -1;
+}
+
+int determine_multithreading(){
+    return -1;
 }
